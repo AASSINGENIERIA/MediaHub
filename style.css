@@ -143,6 +143,7 @@ html, body {
     gap: 0.25rem;
     padding: 0 0.75rem;
     flex-grow: 1;
+    overflow-y: auto;
 }
 
 .nav-item {
@@ -461,50 +462,26 @@ html, body {
     justify-content: center;
     font-size: 1.2rem;
     flex-shrink: 0;
+    background: #1e293b;
+    overflow: hidden;
 }
 
-/* Iconos de las apps segun capturas */
-.icon-multimedia { background: #1e3a5f; color: #38bdf8; }
-.icon-image { background: #064e3b; color: #34d399; }
-.icon-docs { background: #1e293b; color: #fbbf24; }
-.icon-links { background: #0369a1; color: #7dd3fc; }
-.icon-font { background: #4c1d95; color: #c084fc; font-weight: 700; font-size: 1.1rem; }
-.icon-piano { background: #78350f; color: #fde68a; }
-.icon-subtitles { background: #1e293b; color: #38bdf8; font-weight: 800; font-size: 1rem; }
-.icon-stream { background: #3b0764; color: #d8b4fe; }
-.icon-audio-lab { background: #082f49; color: #38bdf8; }
-.icon-midi { background: #1e293b; color: #cbd5e1; }
-.icon-binder { background: #134e4a; color: #5eead4; }
-.icon-excel { background: #064e3b; color: #4ade80; }
-.icon-planos { background: #1e3a5f; color: #60a5fa; }
-.icon-cleaner { background: #1e293b; color: #38bdf8; }
-.icon-security { background: #1e3a5f; color: #38bdf8; }
-.icon-rpg { background: #1e293b; color: #a78bfa; }
+.app-icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
 
-/* Tags superiores */
-.tag {
+.tag-auto {
     font-size: 0.65rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
     border-radius: 5px;
     text-transform: uppercase;
     letter-spacing: 0.4px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
 }
-
-.tag-spec { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-.tag-creative { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-.tag-office { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
-.tag-download { background: rgba(2, 132, 199, 0.18); color: #38bdf8; }
-.tag-typo { background: rgba(168, 85, 247, 0.18); color: #c084fc; }
-.tag-conservatorio { background: rgba(245, 158, 11, 0.18); color: #fcd34d; }
-.tag-edition { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-.tag-stream { background: rgba(192, 132, 252, 0.18); color: #e9d5ff; }
-.tag-synthesis { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; }
-.tag-new { background: rgba(99, 102, 241, 0.18); color: #a5b4fc; }
-.tag-binder { background: rgba(20, 184, 166, 0.18); color: #5eead4; }
-.tag-finanzas { background: rgba(34, 197, 94, 0.18); color: #86efac; }
-.tag-planos { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
-.tag-security { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
 
 .card-dots-btn {
     margin-left: auto;
@@ -565,32 +542,26 @@ html, body {
     display: inline-block;
 }
 
-.status-not-installed {
-    color: var(--text-muted);
+.status-coming {
+    color: var(--accent-blue);
 }
 
-.status-coming {
-    color: var(--text-muted);
-    font-style: italic;
+.status-coming .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    display: inline-block;
 }
 
 .btn-action {
-    padding: 0.4rem 0.95rem;
+    padding: 0.45rem 1.1rem;
     border-radius: 6px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     border: none;
     transition: all 0.2s;
-}
-
-.btn-open {
-    background-color: #ffffff;
-    color: #0f172a;
-}
-
-.btn-open:hover {
-    background-color: #e2e8f0;
 }
 
 .btn-install {
@@ -600,13 +571,7 @@ html, body {
 
 .btn-install:hover {
     background-color: var(--btn-blue-hover);
-}
-
-.btn-disabled {
-    background-color: rgba(255, 255, 255, 0.04);
-    color: var(--text-muted);
-    cursor: not-allowed;
-    border: 1px solid var(--border-color);
+    transform: translateY(-1px);
 }
 
 /* --- APP STATUSBAR --- */

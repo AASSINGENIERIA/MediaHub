@@ -13,17 +13,17 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css?v=1.8.2">
+    <link rel="stylesheet" href="style.css?v=1.8.3">
 </head>
 <body class="dark-theme">
 
     <div class="app-layout">
-        <!-- BARRA LATERAL (SIDEBAR) -->
+        <!-- BARRA LATERAL (SIDEBAR DINÁMICA) -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="app-brand">
                     <div class="app-brand-title">Media Hub</div>
-                    <div class="app-brand-sub">Suite integral de herramientas y conversores multimedia • v1.8.0</div>
+                    <div class="app-brand-sub" id="brandSub">Suite integral de herramientas y conversores multimedia • v1.8.0</div>
                 </div>
             </div>
 
@@ -39,38 +39,8 @@
             </div>
 
             <div class="sidebar-section-title">SECCIONES</div>
-            <nav class="sidebar-nav">
-                <button class="nav-item active" data-filter="all">
-                    <i class="fa-solid fa-shapes nav-icon"></i>
-                    <span>Explorar Todo (16)</span>
-                </button>
-                <button class="nav-item" data-filter="herramientas">
-                    <i class="fa-solid fa-toolbox nav-icon"></i>
-                    <span>Herramientas (5)</span>
-                </button>
-                <button class="nav-item" data-filter="estudio">
-                    <i class="fa-solid fa-microphone-lines nav-icon"></i>
-                    <span>Estudio (5)</span>
-                </button>
-                <button class="nav-item" data-filter="administracion">
-                    <i class="fa-solid fa-chart-pie nav-icon"></i>
-                    <span>Administración (4)</span>
-                </button>
-                <button class="nav-item" data-filter="seguridad">
-                    <i class="fa-solid fa-shield-halved nav-icon"></i>
-                    <span>Seguridad (1)</span>
-                </button>
-                <button class="nav-item" data-filter="juegos">
-                    <i class="fa-solid fa-gamepad nav-icon"></i>
-                    <span>Juegos (1)</span>
-                </button>
-
-                <div class="sidebar-divider"></div>
-
-                <button class="nav-item" data-filter="instaladas">
-                    <i class="fa-solid fa-check nav-icon"></i>
-                    <span>Instaladas en Demo (4)</span>
-                </button>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- Secciones inyectadas dinámicamente desde catalog.json -->
             </nav>
 
             <div class="sidebar-footer">
@@ -99,7 +69,7 @@
                         <span id="soundText">Sonido: Activado</span>
                     </button>
                     <button class="action-btn" id="btnLang">
-                        <span>English</span>
+                        <span id="langText">English</span>
                     </button>
                     <button class="action-btn" id="btnTheme">
                         <i class="fa-regular fa-sun"></i>
@@ -113,354 +83,24 @@
                 <div class="notice-info">
                     <div class="notice-icon"><i class="fa-solid fa-desktop"></i></div>
                     <div>
-                        <h3>Catálogo Interactivo de Demostración</h3>
-                        <p>Esta página web te permite explorar todo el ecosistema de aplicaciones que incluye <strong>Media Hub</strong>. Para ejecutar, convertir y utilizar las herramientas sin límites en tu PC, instala <strong>MediaHub Launcher</strong>.</p>
+                        <h3 id="bannerTitle">Catálogo Oficial de Aplicaciones</h3>
+                        <p id="bannerDesc">Esta web sincroniza en tiempo real las herramientas disponibles en el catálogo de <strong>Media Hub</strong>. Para ejecutar y utilizar cualquiera de ellas, descarga e instala <strong>MediaHub Launcher</strong>.</p>
                     </div>
                 </div>
                 <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="btn-notice-download">
-                    <i class="fa-solid fa-download"></i> Descargar MediaHubLauncher (.exe)
+                    <i class="fa-solid fa-download"></i> Descargar MediaHub Launcher (.exe)
                 </a>
             </div>
 
-            <!-- CONTENEDOR DE GRUPOS -->
+            <!-- CONTENEDOR DE GRUPOS DINÁMICOS -->
             <div class="hub-container" id="hubContainer">
-
-                <!-- SECCIÓN 1: HERRAMIENTAS -->
-                <section class="category-block" data-category="herramientas">
-                    <div class="category-header">
-                        <div class="cat-title-wrap">
-                            <i class="fa-solid fa-toolbox cat-icon"></i>
-                            <h2>Herramientas</h2>
-                            <span class="cat-badge">5</span>
-                        </div>
-                        <p class="cat-desc">Conversión multimedia, documentos, enlaces, imágenes, subtítulos IA y personalización tipográfica.</p>
-                    </div>
-
-                    <div class="cards-grid">
-                        <!-- Convertidor Multimedia -->
-                        <div class="tool-card installed" data-name="convertidor multimedia" data-category="herramientas">
-                            <div class="card-top">
-                                <div class="app-icon icon-multimedia">
-                                    <i class="fa-solid fa-photo-film"></i>
-                                </div>
-                                <span class="tag tag-spec">9 EN 1</span>
-                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('Convertidor Multimedia')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                            </div>
-                            <h3>Convertidor Multimedia</h3>
-                            <p>Video, Audio e Imagen con 9 herramientas profesionales integradas (Corte, GIF, Compresión, Fusión).</p>
-                            <div class="card-bottom">
-                                <span class="status status-ready"><span class="dot"></span> Listo v1.3.6 • 143.0 MB</span>
-                                <button class="btn-action btn-open" onclick="openAppModal('Convertidor Multimedia')">Ver en Launcher</button>
-                            </div>
-                        </div>
-
-                        <!-- Herramientas de Imagen -->
-                        <div class="tool-card installed" data-name="herramientas de imagen" data-category="herramientas">
-                            <div class="card-top">
-                                <div class="app-icon icon-image">
-                                    <i class="fa-solid fa-image"></i>
-                                </div>
-                                <span class="tag tag-creative">CREATIVO</span>
-                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('Herramientas de Imagen')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                            </div>
-                            <h3>Herramientas de Imagen</h3>
-                            <p>Borrador de fondos, escalador y marca de agua en lote para tus fotografías.</p>
-                            <div class="card-bottom">
-                                <span class="status status-ready"><span class="dot"></span> Listo v1.1.7 • 244.5 MB</span>
-                                <button class="btn-action btn-open" onclick="openAppModal('Herramientas de Imagen')">Ver en Launcher</button>
-                            </div>
-                        </div>
-
-                        <!-- Convertidor de Documentos -->
-                        <div class="tool-card" data-name="convertidor de documentos" data-category="herramientas">
-                            <div class="card-top">
-                                <div class="app-icon icon-docs">
-                                    <i class="fa-solid fa-file-invoice"></i>
-                                </div>
-                                <span class="tag tag-office">OFICINA</span>
-                            </div>
-                            <h3>Convertidor de Documentos</h3>
-                            <p>Conversión inteligente entre PDF, Word, Excel, PowerPoint e imágenes a 300 DPI.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 200.0 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Convertidor de Documentos')">Obtener</button>
-                            </div>
-                        </div>
-
-                        <!-- Convertidor de Links -->
-                        <div class="tool-card" data-name="convertidor de links" data-category="herramientas">
-                            <div class="card-top">
-                                <div class="app-icon icon-links">
-                                    <i class="fa-solid fa-circle-down"></i>
-                                </div>
-                                <span class="tag tag-download">DESCARGA</span>
-                            </div>
-                            <h3>Convertidor de Links</h3>
-                            <p>Descarga por lotes desde YouTube, TikTok, Instagram y playlists con soporte paralelo.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 78.0 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Convertidor de Links')">Obtener</button>
-                            </div>
-                        </div>
-
-                        <!-- Taller de Fuentes -->
-                        <div class="tool-card" data-name="taller de fuentes" data-category="herramientas">
-                            <div class="card-top">
-                                <div class="app-icon icon-font">
-                                    <span class="icon-text">Aa</span>
-                                </div>
-                                <span class="tag tag-typo">TIPOGRAFÍA</span>
-                            </div>
-                            <h3>Taller de Fuentes</h3>
-                            <p>Estudio editorial de fuentes Unicode, caracteres invisibles, símbolos raros, marcos y emojis.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 34.4 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Taller de Fuentes')">Obtener</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECCIÓN 2: ESTUDIO -->
-                <section class="category-block" data-category="estudio">
-                    <div class="category-header">
-                        <div class="cat-title-wrap">
-                            <i class="fa-solid fa-microphone-lines cat-icon"></i>
-                            <h2>Estudio</h2>
-                            <span class="cat-badge">5</span>
-                        </div>
-                        <p class="cat-desc">Herramientas avanzadas de streaming, alertas con voces IA, síntesis sonora y conservatorio musical interactivo.</p>
-                    </div>
-
-                    <div class="cards-grid">
-                        <!-- Entrenador Musical -->
-                        <div class="tool-card" data-name="entrenador musical" data-category="estudio">
-                            <div class="card-top">
-                                <div class="app-icon icon-piano">
-                                    <i class="fa-solid fa-music"></i>
-                                </div>
-                                <span class="tag tag-conservatorio">CONSERVATORIO</span>
-                            </div>
-                            <h3>Entrenador Musical</h3>
-                            <p>Conservatorio interactivo de lectura de partituras en 4 claves, armaduras, intervalos, acordes, diapasón y oído musical.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 42.1 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Entrenador Musical')">Obtener</button>
-                            </div>
-                        </div>
-
-                        <!-- Generador de Subtítulos -->
-                        <div class="tool-card" data-name="generador de subtitulos whisper" data-category="estudio">
-                            <div class="card-top">
-                                <div class="app-icon icon-subtitles">
-                                    <span class="icon-text">CC</span>
-                                </div>
-                                <span class="tag tag-edition">EDICIÓN</span>
-                            </div>
-                            <h3>Generador de Subtítulos</h3>
-                            <p>Transcripción y generación automática de subtítulos con Whisper AI de forma local.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 37.6 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Generador de Subtítulos')">Obtener</button>
-                            </div>
-                        </div>
-
-                        <!-- StreamStudio -->
-                        <div class="tool-card" data-name="streamstudio obs twitch" data-category="estudio">
-                            <div class="card-top">
-                                <div class="app-icon icon-stream">
-                                    <i class="fa-solid fa-tower-broadcast"></i>
-                                </div>
-                                <span class="tag tag-stream">STREAMING</span>
-                            </div>
-                            <h3>StreamStudio</h3>
-                            <p>Suite de alertas OBS, puntos de canal con Voces IA y analíticas en vivo para Twitch.</p>
-                            <div class="card-bottom">
-                                <span class="status status-coming">Próximamente</span>
-                                <button class="btn-action btn-disabled" disabled>Próximamente</button>
-                            </div>
-                        </div>
-
-                        <!-- Laboratorio de Audio -->
-                        <div class="tool-card" data-name="laboratorio de audio sfx bytebeat" data-category="estudio">
-                            <div class="card-top">
-                                <div class="app-icon icon-audio-lab">
-                                    <i class="fa-solid fa-wave-square"></i>
-                                </div>
-                                <span class="tag tag-synthesis">SÍNTESIS</span>
-                            </div>
-                            <h3>Laboratorio de Audio</h3>
-                            <p>Laboratorio de síntesis matemática, fórmulas Bytebeat y efectos procedurales SFX.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 47.4 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('Laboratorio de Audio')">Obtener</button>
-                            </div>
-                        </div>
-
-                        <!-- MusicalMIDI -->
-                        <div class="tool-card" data-name="musicalmidi piano pc" data-category="estudio">
-                            <div class="card-top">
-                                <div class="app-icon icon-midi">
-                                    <i class="fa-solid fa-sliders"></i>
-                                </div>
-                                <span class="tag tag-new">NUEVO</span>
-                            </div>
-                            <h3>MusicalMIDI</h3>
-                            <p>Herramienta MIDI para comunicar el Piano al PC con latencia ultra reducida.</p>
-                            <div class="card-bottom">
-                                <span class="status status-coming">Próximamente</span>
-                                <button class="btn-action btn-disabled" disabled>Próximamente</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECCIÓN 3: ADMINISTRACIÓN -->
-                <section class="category-block" data-category="administracion">
-                    <div class="category-header">
-                        <div class="cat-title-wrap">
-                            <i class="fa-solid fa-chart-pie cat-icon"></i>
-                            <h2>Administración</h2>
-                            <span class="cat-badge">4</span>
-                        </div>
-                        <p class="cat-desc">Finanzas personales, planimetría técnica para construcción, inventario y defensa de ciberseguridad.</p>
-                    </div>
-
-                    <div class="cards-grid">
-                        <!-- PokeBinder -->
-                        <div class="tool-card installed" data-name="pokebinder pokemon tcg" data-category="administracion">
-                            <div class="card-top">
-                                <div class="app-icon icon-binder">
-                                    <i class="fa-solid fa-table-cells"></i>
-                                </div>
-                                <span class="tag tag-binder">TCG BINDER</span>
-                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('PokeBinder')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                            </div>
-                            <h3>PokeBinder</h3>
-                            <p>Organizador visual de carpetas Pokémon TCG, cotización de cartas, mazos e inventario.</p>
-                            <div class="card-bottom">
-                                <span class="status status-ready"><span class="dot"></span> Listo v1.4.1 • 633.3 MB</span>
-                                <button class="btn-action btn-open" onclick="openAppModal('PokeBinder')">Ver en Launcher</button>
-                            </div>
-                        </div>
-
-                        <!-- Gestor Presupuestario -->
-                        <div class="tool-card" data-name="gestor presupuestario finanzas" data-category="administracion">
-                            <div class="card-top">
-                                <div class="app-icon icon-excel">
-                                    <i class="fa-solid fa-file-excel"></i>
-                                </div>
-                                <span class="tag tag-finanzas">FINANZAS</span>
-                            </div>
-                            <h3>Gestor Presupuestario</h3>
-                            <p>Gestión financiera, seguimiento de gastos, presupuestos y balance en tiempo real.</p>
-                            <div class="card-bottom">
-                                <span class="status status-coming">Próximamente</span>
-                                <button class="btn-action btn-disabled" disabled>Próximamente</button>
-                            </div>
-                        </div>
-
-                        <!-- ChilePlanos -->
-                        <div class="tool-card" data-name="chileplanos arquitectura planimetria" data-category="administracion">
-                            <div class="card-top">
-                                <div class="app-icon icon-planos">
-                                    <i class="fa-solid fa-compass-drafting"></i>
-                                </div>
-                                <span class="tag tag-planos">PLANOS</span>
-                            </div>
-                            <h3>ChilePlanos</h3>
-                            <p>Hub de planimetría técnica y arquitectura para estudiantes y profesionales.</p>
-                            <div class="card-bottom">
-                                <span class="status status-coming">Próximamente</span>
-                                <button class="btn-action btn-disabled" disabled>Próximamente</button>
-                            </div>
-                        </div>
-
-                        <!-- PCleaner -->
-                        <div class="tool-card" data-name="pcleaner limpiador liberador" data-category="administracion">
-                            <div class="card-top">
-                                <div class="app-icon icon-cleaner">
-                                    <i class="fa-solid fa-broom"></i>
-                                </div>
-                                <span class="tag tag-new">NUEVO</span>
-                            </div>
-                            <h3>PCleaner</h3>
-                            <p>Limpiador y liberador de espacio en tu computadora de forma segura y eficiente.</p>
-                            <div class="card-bottom">
-                                <span class="status status-not-installed">Disponible en Launcher • 51.2 MB</span>
-                                <button class="btn-action btn-install" onclick="openAppModal('PCleaner')">Obtener</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECCIÓN 4: SEGURIDAD -->
-                <section class="category-block" data-category="seguridad">
-                    <div class="category-header">
-                        <div class="cat-title-wrap">
-                            <i class="fa-solid fa-shield-halved cat-icon"></i>
-                            <h2>Seguridad</h2>
-                            <span class="cat-badge">1</span>
-                        </div>
-                        <p class="cat-desc">Herramientas de seguridad, análisis y detección de virus, malware, etc.</p>
-                    </div>
-
-                    <div class="cards-grid">
-                        <!-- BlueGuard -->
-                        <div class="tool-card" data-name="blueguard ciberseguridad red logs" data-category="seguridad">
-                            <div class="card-top">
-                                <div class="app-icon icon-security">
-                                    <i class="fa-solid fa-shield-virus"></i>
-                                </div>
-                                <span class="tag tag-security">SEGURIDAD</span>
-                            </div>
-                            <h3>BlueGuard</h3>
-                            <p>Asistente Blue Team de ciberseguridad, puertos, red y logs traducidos en tiempo real.</p>
-                            <div class="card-bottom">
-                                <span class="status status-coming">Próximamente</span>
-                                <button class="btn-action btn-disabled" disabled>Próximamente</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECCIÓN 5: JUEGOS -->
-                <section class="category-block" data-category="juegos">
-                    <div class="category-header">
-                        <div class="cat-title-wrap">
-                            <i class="fa-solid fa-gamepad cat-icon"></i>
-                            <h2>Juegos</h2>
-                            <span class="cat-badge">1</span>
-                        </div>
-                        <p class="cat-desc">Colección de mini-juegos livianos para entretenimiento inmediato.</p>
-                    </div>
-
-                    <div class="cards-grid">
-                        <!-- RPG Terminal -->
-                        <div class="tool-card installed" data-name="rpg terminal cmd juego" data-category="juegos">
-                            <div class="card-top">
-                                <div class="app-icon icon-rpg">
-                                    <i class="fa-solid fa-terminal"></i>
-                                </div>
-                                <span class="tag tag-new">NUEVO</span>
-                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('RPG Terminal')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                            </div>
-                            <h3>RPG Terminal</h3>
-                            <p>Juego RPG jugable desde la Terminal CMD con sistema de niveles y combate.</p>
-                            <div class="card-bottom">
-                                <span class="status status-ready"><span class="dot"></span> Listo v1.0.9 • 58.9 MB</span>
-                                <button class="btn-action btn-open" onclick="openAppModal('RPG Terminal')">Ver en Launcher</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                <!-- Secciones y tarjetas renderizadas automáticamente desde catalog.json -->
             </div>
 
-            <!-- FOOTER BAR ESTILO APP (SIN PANEL ADMIN) -->
+            <!-- FOOTER BAR ESTILO APP -->
             <footer class="app-statusbar">
-                <div class="status-left">
-                    <i class="fa-solid fa-check"></i> 16 herramientas disponibles en la suite • Catálogo de Demostración
+                <div class="status-left" id="statusCount">
+                    <i class="fa-solid fa-check"></i> Cargando catálogo de herramientas...
                 </div>
                 <div class="status-right">
                     <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="status-link-highlight">
@@ -479,15 +119,15 @@
                 <div class="modal-icon-badge" id="modalIcon">
                     <i class="fa-solid fa-rocket"></i>
                 </div>
-                <h3 id="modalTitle">Aplicación de la Suite</h3>
-                <p id="modalDesc">Esta aplicación forma parte de la suite nativa de Media Hub. Para utilizarla en tu equipo con todas sus características y rendimiento completo, instala el lanzador oficial.</p>
+                <h3 id="modalTitle">Aplicación</h3>
+                <p id="modalDesc">Para ejecutar esta aplicación en tu equipo, instala MediaHub Launcher.</p>
                 
                 <div class="modal-cta-box">
                     <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="modal-dl-btn">
                         <i class="fa-solid fa-download"></i>
                         <span>Descargar MediaHub Launcher (.exe)</span>
                     </a>
-                    <span class="modal-note">Versión oficial v1.8.0 para Windows</span>
+                    <span class="modal-note">Instalador oficial para Windows • v1.8.0</span>
                 </div>
             </div>
         </div>
@@ -502,6 +142,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=1.8.2"></script>
+    <script src="script.js?v=1.8.3"></script>
 </body>
 </html>
