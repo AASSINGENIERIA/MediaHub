@@ -121,15 +121,30 @@ if (btnLang) {
     });
 }
 
-// Action Toast Helper
-function simulateAction(appName, action) {
-    if (action === 'abrir') {
-        showToast(appName, 'Lanzando aplicación local en segundo plano...');
-    } else if (action === 'instalar') {
-        showToast(appName, 'Descargando paquete de instalación de la suite...');
-    }
+// Modal Helper
+const modal = document.getElementById('appModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+
+function openAppModal(appName) {
+    modalTitle.textContent = `${appName}`;
+    modalDesc.textContent = `"${appName}" se ejecuta directamente a través de MediaHub Launcher. Descarga e instala el lanzador oficial para comenzar a usarla.`;
+    modal.classList.add('active');
 }
 
+function closeModal() {
+    modal.classList.remove('active');
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+}
+
+// Toast Notification
 function showToast(title, message) {
     const toast = document.getElementById('toast');
     const toastTitle = document.getElementById('toastTitle');

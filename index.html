@@ -8,12 +8,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css?v=1.8.1">
+    <link rel="stylesheet" href="style.css?v=1.8.2">
 </head>
 <body class="dark-theme">
 
@@ -25,6 +25,17 @@
                     <div class="app-brand-title">Media Hub</div>
                     <div class="app-brand-sub">Suite integral de herramientas y conversores multimedia • v1.8.0</div>
                 </div>
+            </div>
+
+            <!-- BOTÓN PRINCIPAL DE DESCARGA LAUNCHER EN SIDEBAR -->
+            <div class="sidebar-download-cta">
+                <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="btn-download-launcher">
+                    <i class="fa-solid fa-download"></i>
+                    <div class="btn-dl-text">
+                        <strong>Descargar MediaHub</strong>
+                        <span>Instalador v1.8.0 (.exe)</span>
+                    </div>
+                </a>
             </div>
 
             <div class="sidebar-section-title">SECCIONES</div>
@@ -58,7 +69,7 @@
 
                 <button class="nav-item" data-filter="instaladas">
                     <i class="fa-solid fa-check nav-icon"></i>
-                    <span>Instaladas (4)</span>
+                    <span>Instaladas en Demo (4)</span>
                 </button>
             </nav>
 
@@ -79,10 +90,10 @@
                 </div>
 
                 <div class="topbar-actions">
-                    <button class="action-btn" id="btnCatalogo">
-                        <i class="fa-solid fa-box-archive"></i>
-                        <span>Catálogo</span>
-                    </button>
+                    <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="topbar-dl-btn">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span>Descargar Launcher</span>
+                    </a>
                     <button class="action-btn" id="btnSound">
                         <i class="fa-solid fa-volume-high"></i>
                         <span id="soundText">Sonido: Activado</span>
@@ -96,6 +107,20 @@
                     </button>
                 </div>
             </header>
+
+            <!-- BANNER DEMO / INVITACIÓN DE DESCARGA -->
+            <div class="demo-notice-banner">
+                <div class="notice-info">
+                    <div class="notice-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <div>
+                        <h3>Catálogo Interactivo de Demostración</h3>
+                        <p>Esta página web te permite explorar todo el ecosistema de aplicaciones que incluye <strong>Media Hub</strong>. Para ejecutar, convertir y utilizar las herramientas sin límites en tu PC, instala <strong>MediaHub Launcher</strong>.</p>
+                    </div>
+                </div>
+                <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="btn-notice-download">
+                    <i class="fa-solid fa-download"></i> Descargar MediaHubLauncher (.exe)
+                </a>
+            </div>
 
             <!-- CONTENEDOR DE GRUPOS -->
             <div class="hub-container" id="hubContainer">
@@ -119,13 +144,13 @@
                                     <i class="fa-solid fa-photo-film"></i>
                                 </div>
                                 <span class="tag tag-spec">9 EN 1</span>
-                                <button class="card-dots-btn" aria-label="Opciones"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('Convertidor Multimedia')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <h3>Convertidor Multimedia</h3>
                             <p>Video, Audio e Imagen con 9 herramientas profesionales integradas (Corte, GIF, Compresión, Fusión).</p>
                             <div class="card-bottom">
                                 <span class="status status-ready"><span class="dot"></span> Listo v1.3.6 • 143.0 MB</span>
-                                <button class="btn-action btn-open" onclick="simulateAction('Convertidor Multimedia', 'abrir')">Abrir</button>
+                                <button class="btn-action btn-open" onclick="openAppModal('Convertidor Multimedia')">Ver en Launcher</button>
                             </div>
                         </div>
 
@@ -136,13 +161,13 @@
                                     <i class="fa-solid fa-image"></i>
                                 </div>
                                 <span class="tag tag-creative">CREATIVO</span>
-                                <button class="card-dots-btn" aria-label="Opciones"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('Herramientas de Imagen')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <h3>Herramientas de Imagen</h3>
                             <p>Borrador de fondos, escalador y marca de agua en lote para tus fotografías.</p>
                             <div class="card-bottom">
                                 <span class="status status-ready"><span class="dot"></span> Listo v1.1.7 • 244.5 MB</span>
-                                <button class="btn-action btn-open" onclick="simulateAction('Herramientas de Imagen', 'abrir')">Abrir</button>
+                                <button class="btn-action btn-open" onclick="openAppModal('Herramientas de Imagen')">Ver en Launcher</button>
                             </div>
                         </div>
 
@@ -157,8 +182,8 @@
                             <h3>Convertidor de Documentos</h3>
                             <p>Conversión inteligente entre PDF, Word, Excel, PowerPoint e imágenes a 300 DPI.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 200.0 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Convertidor de Documentos', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 200.0 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Convertidor de Documentos')">Obtener</button>
                             </div>
                         </div>
 
@@ -173,8 +198,8 @@
                             <h3>Convertidor de Links</h3>
                             <p>Descarga por lotes desde YouTube, TikTok, Instagram y playlists con soporte paralelo.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 78.0 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Convertidor de Links', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 78.0 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Convertidor de Links')">Obtener</button>
                             </div>
                         </div>
 
@@ -189,8 +214,8 @@
                             <h3>Taller de Fuentes</h3>
                             <p>Estudio editorial de fuentes Unicode, caracteres invisibles, símbolos raros, marcos y emojis.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 34.4 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Taller de Fuentes', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 34.4 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Taller de Fuentes')">Obtener</button>
                             </div>
                         </div>
                     </div>
@@ -219,8 +244,8 @@
                             <h3>Entrenador Musical</h3>
                             <p>Conservatorio interactivo de lectura de partituras en 4 claves, armaduras, intervalos, acordes, diapasón y oído musical.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 42.1 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Entrenador Musical', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 42.1 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Entrenador Musical')">Obtener</button>
                             </div>
                         </div>
 
@@ -235,8 +260,8 @@
                             <h3>Generador de Subtítulos</h3>
                             <p>Transcripción y generación automática de subtítulos con Whisper AI de forma local.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 37.6 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Generador de Subtítulos', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 37.6 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Generador de Subtítulos')">Obtener</button>
                             </div>
                         </div>
 
@@ -267,8 +292,8 @@
                             <h3>Laboratorio de Audio</h3>
                             <p>Laboratorio de síntesis matemática, fórmulas Bytebeat y efectos procedurales SFX.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 47.4 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('Laboratorio de Audio', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 47.4 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('Laboratorio de Audio')">Obtener</button>
                             </div>
                         </div>
 
@@ -309,13 +334,13 @@
                                     <i class="fa-solid fa-table-cells"></i>
                                 </div>
                                 <span class="tag tag-binder">TCG BINDER</span>
-                                <button class="card-dots-btn" aria-label="Opciones"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('PokeBinder')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <h3>PokeBinder</h3>
                             <p>Organizador visual de carpetas Pokémon TCG, cotización de cartas, mazos e inventario.</p>
                             <div class="card-bottom">
                                 <span class="status status-ready"><span class="dot"></span> Listo v1.4.1 • 633.3 MB</span>
-                                <button class="btn-action btn-open" onclick="simulateAction('PokeBinder', 'abrir')">Abrir</button>
+                                <button class="btn-action btn-open" onclick="openAppModal('PokeBinder')">Ver en Launcher</button>
                             </div>
                         </div>
 
@@ -362,8 +387,8 @@
                             <h3>PCleaner</h3>
                             <p>Limpiador y liberador de espacio en tu computadora de forma segura y eficiente.</p>
                             <div class="card-bottom">
-                                <span class="status status-not-installed">No instalada • 51.2 MB</span>
-                                <button class="btn-action btn-install" onclick="simulateAction('PCleaner', 'instalar')">Instalar</button>
+                                <span class="status status-not-installed">Disponible en Launcher • 51.2 MB</span>
+                                <button class="btn-action btn-install" onclick="openAppModal('PCleaner')">Obtener</button>
                             </div>
                         </div>
                     </div>
@@ -418,13 +443,13 @@
                                     <i class="fa-solid fa-terminal"></i>
                                 </div>
                                 <span class="tag tag-new">NUEVO</span>
-                                <button class="card-dots-btn" aria-label="Opciones"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('RPG Terminal')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <h3>RPG Terminal</h3>
                             <p>Juego RPG jugable desde la Terminal CMD con sistema de niveles y combate.</p>
                             <div class="card-bottom">
                                 <span class="status status-ready"><span class="dot"></span> Listo v1.0.9 • 58.9 MB</span>
-                                <button class="btn-action btn-open" onclick="simulateAction('RPG Terminal', 'abrir')">Abrir</button>
+                                <button class="btn-action btn-open" onclick="openAppModal('RPG Terminal')">Ver en Launcher</button>
                             </div>
                         </div>
                     </div>
@@ -432,18 +457,40 @@
 
             </div>
 
-            <!-- FOOTER BAR ESTILO APP -->
+            <!-- FOOTER BAR ESTILO APP (SIN PANEL ADMIN) -->
             <footer class="app-statusbar">
                 <div class="status-left">
-                    <i class="fa-solid fa-check"></i> 4 de 16 herramientas instaladas • 3.02 GB en disco
+                    <i class="fa-solid fa-check"></i> 16 herramientas disponibles en la suite • Catálogo de Demostración
                 </div>
                 <div class="status-right">
-                    <a href="https://aassingenieria.com" class="status-link"><i class="fa-solid fa-gear"></i> Panel Admin Web</a>
-                    <a href="#" onclick="alert('Gracias por probar Media Hub Suite'); return false;" class="status-link">Encuesta de Satisfacción</a>
-                    <a href="#" onclick="alert('Ruta de ejecutables locales'); return false;" class="status-link">Abrir carpeta de apps</a>
+                    <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="status-link-highlight">
+                        <i class="fa-solid fa-download"></i> Descargar MediaHub Launcher v1.8.0
+                    </a>
                 </div>
             </footer>
         </main>
+    </div>
+
+    <!-- MODAL DE DESCARGA / DETALLE DE APP -->
+    <div id="appModal" class="modal-overlay">
+        <div class="modal-dialog">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body">
+                <div class="modal-icon-badge" id="modalIcon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 id="modalTitle">Aplicación de la Suite</h3>
+                <p id="modalDesc">Esta aplicación forma parte de la suite nativa de Media Hub. Para utilizarla en tu equipo con todas sus características y rendimiento completo, instala el lanzador oficial.</p>
+                
+                <div class="modal-cta-box">
+                    <a href="https://github.com/Media-Hub-Site/MediaHub-Launcher/releases/download/v1.8.0/MediaHubInstaller.exe" class="modal-dl-btn">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Descargar MediaHub Launcher (.exe)</span>
+                    </a>
+                    <span class="modal-note">Versión oficial v1.8.0 para Windows</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- TOAST NOTIFICATION -->
@@ -455,6 +502,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.8.2"></script>
 </body>
 </html>
