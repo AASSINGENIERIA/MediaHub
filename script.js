@@ -14,16 +14,31 @@ const categoryIconMap = {
     installed: 'fa-check'
 };
 
-// Cargar catálogo JSON
+// URL remota oficial del catálogo en vivo (la misma que consume MediaHub-Launcher)
+const REMOTE_CATALOG_URL = 'https://raw.githubusercontent.com/Media-Hub-Site/MediaHub-Launcher/main/catalog.json';
+const LOCAL_CATALOG_FALLBACK = 'catalog.json';
+
+// Cargar catálogo JSON en vivo
 async function loadCatalog() {
     try {
-        const response = await fetch(`catalog.json?t=${Date.now()}`);
-        if (!response.ok) throw new Error('No se pudo cargar catalog.json');
+        // Intentar primero desde el repositorio fuente remoto con cache-busting
+        let response = await fetch(`${REMOTE_CATALOG_URL}?_=${Date.now()}`);
+        if (!response.ok) {
+            // Fallback al archivo local si falla la red
+            response = await fetch(`${LOCAL_CATALOG_FALLBACK}?_=${Date.now()}`);
+        }
+        if (!response.ok) throw new Error('No se pudo cargar el catálogo');
         catalogData = await response.json();
         renderAll();
     } catch (err) {
         console.error('Error cargando catálogo:', err);
-        showToast('Catálogo', 'Error al sincronizar con catalog.json');
+        try {
+            const fallbackResp = await fetch(`${LOCAL_CATALOG_FALLBACK}?_=${Date.now()}`);
+            catalogData = await fallbackResp.json();
+            renderAll();
+        } catch (e) {
+            showToast('Catálogo', 'Error al sincronizar catálogo');
+        }
     }
 }
 
