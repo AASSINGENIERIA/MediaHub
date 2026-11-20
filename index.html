@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaHub | AASSINGENIERIA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="https://aassingenieria.com" class="logo">
+                <i class="fa-solid fa-bolt logo-icon"></i> AASSINGENIERIA <span class="badge-media">MediaHub</span>
+            </a>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#inicio" class="nav-link active">Biblioteca</a></li>
+                <li><a href="#proyectos" class="nav-link">Galería Proyectos</a></li>
+                <li><a href="#normativa" class="nav-link">Normativa SEC</a></li>
+                <li><a href="https://aassingenieria.com" class="nav-link back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Principal</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="hero-content reveal">
+            <span class="hero-badge"><i class="fa-solid fa-folder-open"></i> Repositorio Técnico & Recursos</span>
+            <h1>Centro Multimedia y Documentación Técnica</h1>
+            <p>Accede a fichas técnicas de equipos, diagramas unilineales estándar, normativas chilenas de ingeniería eléctrica y memoria de proyectos realizados.</p>
+            
+            <!-- SEARCH BAR -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Buscar por palabra clave: disyuntores, transformadores, RIC, planos...">
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS FILTER -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all">Todos los Recursos</button>
+                <button class="filter-btn" data-filter="planos"><i class="fa-solid fa-compass-drafting"></i> Planos & Esquemas</button>
+                <button class="filter-btn" data-filter="fichas"><i class="fa-solid fa-microchip"></i> Fichas Técnicas</button>
+                <button class="filter-btn" data-filter="normativa"><i class="fa-solid fa-book-bookmark"></i> Normativa & RIC</button>
+                <button class="filter-btn" data-filter="guias"><i class="fa-solid fa-file-lines"></i> Guías & Manuales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID DE RECURSOS -->
+    <section class="section">
+        <div class="container">
+            <div class="resources-grid" id="resourcesGrid">
+
+                <!-- ITEM 1 -->
+                <div class="resource-card reveal" data-category="planos">
+                    <div class="card-tag planos">Plano CAD / PDF</div>
+                    <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3>Diagrama Unilineal Estándar 380V</h3>
+                    <p>Esquema referencial de tablero general de distribución para naves industriales con protecciones de sobretensión y transferencias.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-pdf"></i> PDF • 2.4 MB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+                <!-- ITEM 2 -->
+                <div class="resource-card reveal" data-category="normativa">
+                    <div class="card-tag normativa">Normativa SEC</div>
+                    <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3>Resumen Pliegos Técnicos RIC N° 01 al 19</h3>
+                    <p>Compendio sintetizado con las principales exigencias del Reglamento de Seguridad de Instalaciones Eléctricas de Chile.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-pdf"></i> PDF • 4.1 MB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="resource-card reveal" data-category="fichas">
+                    <div class="card-tag fichas">Ficha Técnica</div>
+                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Curvas de Disparo Interruptores Termomagnéticos</h3>
+                    <p>Guía de coordinación y selectividad para curvas B, C y D en tableros de faenas y centros de distribución.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-pdf"></i> PDF • 1.8 MB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+                <!-- ITEM 4 -->
+                <div class="resource-card reveal" data-category="guias">
+                    <div class="card-tag guias">Guía de Campo</div>
+                    <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>Checklist de Inspección de Tableros Eléctricos</h3>
+                    <p>Lista de chequeo en terreno con puntos críticos de temperatura, par de apriete, señalética y estado de puesta a tierra.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-lines"></i> DOCX • 540 KB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+                <!-- ITEM 5 -->
+                <div class="resource-card reveal" data-category="planos">
+                    <div class="card-tag planos">Plano CAD / PDF</div>
+                    <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Malla a Tierra y Puesta a Tierra en Subestaciones</h3>
+                    <p>Detalle de configuración de electrodos, conductor desnudo en bucle y cálculo de resistividad de terreno.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-pdf"></i> DWG / PDF • 3.2 MB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+                <!-- ITEM 6 -->
+                <div class="resource-card reveal" data-category="fichas">
+                    <div class="card-tag fichas">Ficha Técnica</div>
+                    <div class="card-icon"><i class="fa-solid fa-plug"></i></div>
+                    <h3>Cálculo de Caída de Tensión y Calibres de Conductores</h3>
+                    <p>Tabla de dimensionamiento según corriente admisible, aislación THHN/XHHW y longitud de acometidas.</p>
+                    <div class="card-footer">
+                        <span class="file-info"><i class="fa-regular fa-file-excel"></i> XLSX • 820 KB</span>
+                        <a href="#" class="btn-download" onclick="alert('Descarga de ejemplo de plantilla')"><i class="fa-solid fa-download"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE PROYECTOS -->
+    <section id="proyectos" class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Portafolio Fotográfico</span>
+                <h2 class="section-title">Obras y Montajes Realizados</h2>
+                <p class="section-subtitle">Evidencia visual de instalaciones industriales, canalizaciones y tableros construidos por AASSINGENIERIA.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-card reveal">
+                    <div class="gallery-preview">
+                        <i class="fa-solid fa-industry gallery-placeholder-icon"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Tablero General de Fuerza TGF</h4>
+                        <p>Armado e integración en celda modular autoportante IP54 con protecciones electrónicas regulables.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card reveal">
+                    <div class="gallery-preview">
+                        <i class="fa-solid fa-solar-panel gallery-placeholder-icon"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Inversores y Canalización EPC</h4>
+                        <p>Tendido de bandeja tipo escalerilla galvanizada y protecciones DC en planta fotovoltaica.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card reveal">
+                    <div class="gallery-preview">
+                        <i class="fa-solid fa-tower-broadcast gallery-placeholder-icon"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Subestación Transformadora 500 kVA</h4>
+                        <p>Montaje y conexionado de celda de remonte en media tensión con malla de puesta a tierra dedicada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 AASSINGENIERIA - MediaHub & Centro de Recursos.</p>
+            <div class="footer-links">
+                <a href="https://aassingenieria.com">Sitio Principal</a>
+                <a href="https://mantencion.aassingenieria.com">Servicio de Mantención</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
