@@ -152,23 +152,28 @@ function createCardElement(app) {
     const iconFileName = app.key ? `${app.key}.ico` : (app.icon ? app.icon.replace(/\.(png|webp)$/, '.ico') : '');
     const iconHtml = `<img src="assets/icons/${iconFileName}" alt="${appName}" class="app-icon-img" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fa-solid fa-cube\\'></i>';">`;
 
+    const isComing = app.is_disabled === true;
+    const statusText = isComing 
+        ? (currentLang === 'es' ? 'Próximamente' : 'Coming Soon')
+        : (currentLang === 'es' ? 'Disponible en Launcher' : 'Available in Launcher');
+
     card.innerHTML = `
         <div class="card-top">
             <div class="app-icon custom-app-icon">
                 ${iconHtml}
             </div>
             ${badgeText ? `<span class="tag tag-auto">${badgeText}</span>` : ''}
-            <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('${escapeHtml(appName)}')">
+            <button class="card-dots-btn" aria-label="Opciones" onclick="openAppModal('${escapeHtml(appName)}', ${isComing})">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
             </button>
         </div>
         <h3>${appName}</h3>
         <p>${appDesc}</p>
         <div class="card-bottom">
-            <span class="status ${app.is_disabled ? 'status-coming' : 'status-ready'}">
-                <span class="dot"></span> ${app.is_disabled ? 'Disponible en Launcher' : 'Disponible en Launcher'}
+            <span class="status ${isComing ? 'status-coming' : 'status-ready'}">
+                <span class="dot"></span> ${statusText}
             </span>
-            <button class="btn-action btn-install" onclick="openAppModal('${escapeHtml(appName)}')">Obtener</button>
+            <button class="btn-action ${isComing ? 'btn-disabled' : 'btn-install'}" onclick="openAppModal('${escapeHtml(appName)}', ${isComing})">${isComing ? (currentLang === 'es' ? 'Próximamente' : 'Coming Soon') : (currentLang === 'es' ? 'Obtener' : 'Get')}</button>
         </div>
     `;
 
@@ -234,10 +239,14 @@ const modal = document.getElementById('appModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 
-function openAppModal(appName) {
+function openAppModal(appName, isComing = false) {
     if (!modal) return;
     modalTitle.textContent = `${appName}`;
-    modalDesc.textContent = `"${appName}" se encuentra integrada y lista para ejecutar a través de MediaHub Launcher. Descarga e instala el lanzador oficial para utilizarla en tu PC.`;
+    if (isComing) {
+        modalDesc.textContent = `"${appName}" está actualmente en desarrollo y se incorporará próximamente a MediaHub. Descarga el Launcher para mantener tu ecosistema actualizado y recibirla en cuanto se lance.`;
+    } else {
+        modalDesc.textContent = `"${appName}" se encuentra integrada y lista para ejecutar a través de MediaHub Launcher. Descarga e instala el lanzador oficial para utilizarla en tu PC.`;
+    }
     modal.classList.add('active');
 }
 
